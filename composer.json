@@ -1,0 +1,6 @@
+{
+    "name": "Sergey Ageev (Cimus)",
+    "require": {
+        "symfony/console": "^3.0"
+    }
+}
