@@ -29,8 +29,6 @@ class StatCommand extends Command
             return;
         }
         
-        
-        
         $stat = [];
         
         foreach($phrases as $phrase){

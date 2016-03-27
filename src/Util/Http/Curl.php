@@ -12,8 +12,6 @@ class Curl
     //Базовые заголовки для курла
     private $curlOptions;
     
-
-
     /**
      * 
      */
@@ -30,15 +28,20 @@ class Curl
     }
     
     
-    
+    /**
+     * Запускает запрос и возвращает результат, 
+     * в массиве $info будет помещена информация о результате запроса 
+     * 
+     * @param Request $request
+     * @param array &$info
+     * @return boolean|string
+     */
     public function run(Request $request, &$info)
     {
-        if(!isset($request->curlOptions[CURLOPT_URL]) OR $request->curlOptions[CURLOPT_URL] == '')
+        if(!isset($request->curlOptions[CURLOPT_URL]) OR !$request->curlOptions[CURLOPT_URL])
             return false;
         
         $request->curlOptions = $request->curlOptions + $this->curlOptions;
-        
-        
         
         $curl = curl_init();
         curl_setopt_array ($curl, $request->curlOptions);
@@ -47,7 +50,6 @@ class Curl
 	$info=curl_getinfo($curl);
 	curl_close($curl);
 	
-	if($res != '') return $res;
-	else return false;
+	return $res;
     }
 }

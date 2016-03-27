@@ -13,9 +13,6 @@ $loader->add('Util', __DIR__. '/src');
 $loader->register();
 
 
-
-
-
 class Application extends Symfony\Component\Console\Application
 {
     
@@ -23,6 +20,10 @@ class Application extends Symfony\Component\Console\Application
     private $dbUser = 'root';
     private $dbPassword = '4592';
     
+    /**
+     *
+     * @var PDO 
+     */
     private $pdo;
     
     /**
@@ -56,14 +57,10 @@ class Application extends Symfony\Component\Console\Application
 
 
 
-$application = new Application();
+$application = new Application('tz6', 1);
 $application->add(new Command\CampaignsLoadCommand());
 $application->add(new Command\BannersLoadCommand());
 $application->add(new Command\StatCommand());
-
-
-
-
 
 
 $application->run();

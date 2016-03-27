@@ -15,8 +15,9 @@ class CampaignsLoadCommand extends Command
 {
     protected function configure()
     {
-        $this->setName('load:campaigns')
-            ->setDescription('Загружает кампании');
+        $this
+                ->setName('load:campaigns')
+                ->setDescription('Загружает кампании');
     }
 
     protected function execute(InputInterface $input, OutputInterface $output)
@@ -32,8 +33,10 @@ class CampaignsLoadCommand extends Command
     
     /**
      * Сохраняет новые кампании в БД 
+     * Для исключения множественных инсертов в БД, 
+     * данные буферизируются пачками по 1000 кампаний
      * 
-     * @param array $data
+     * @param array $data массив кампаний
      * @return integer $cntInsert Количество вставленных данных
      */
     protected function saveCampaigns($data)

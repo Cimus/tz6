@@ -17,8 +17,9 @@ class BannersLoadCommand extends Command
 {
     protected function configure()
     {
-        $this->setName('load:banners')
-            ->setDescription('Загружает объявления');
+        $this
+                ->setName('load:banners')
+                ->setDescription('Загружает объявления');
     }
     
     
@@ -118,7 +119,12 @@ class BannersLoadCommand extends Command
         return true;
     }
 
-    
+    /**
+     * Очищает фразу от минус слов и управляющих символов
+     * 
+     * @param string $phrase фраза для очистки
+     * @return string очищенная фраза
+     */
     protected function clearPrase($phrase)
     {
         //Тут удаляем -минус слова, можно это сделать и регуляркой

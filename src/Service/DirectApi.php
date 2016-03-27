@@ -16,20 +16,18 @@ class DirectApi
     private $token;
     
     
-    
+    /**
+     * Тут надо бы заюзать паттерн внедрение зависимостей :)
+     * 
+     * @param string $login
+     * @param string $appId
+     * @param string $token
+     */
     public function __construct($login = 'rudakova-test-api', $appId = 'b7a173fe63f34291bdc42704375dcc4d', $token = '644f887aa2d04c0d9d73090a98fbb51b')
     {
         $this->login = $login;
         $this->appId = $appId;
         $this->token = $token;
-        
-        $this->init();
-    }
-    
-    
-    private function init()
-    {
-        
     }
     
     
@@ -55,6 +53,8 @@ class DirectApi
     }
     
     /**
+     * Отправляет запрос к апише директа.
+     * Тут надо бы сделать проверку лимитов
      * 
      * @param Request $request
      * @return array
@@ -83,8 +83,6 @@ class DirectApi
         return $result;
     }
 
-
-    
     
     /**
      * Метод создаёт запрос для курла
